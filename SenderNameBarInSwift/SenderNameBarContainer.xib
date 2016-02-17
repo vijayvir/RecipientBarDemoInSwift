@@ -63,6 +63,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="SDm-10-9qo" secondAttribute="trailing" id="aBg-MS-rID"/>
                 <constraint firstItem="SDm-10-9qo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dh4-Ew-cCD"/>
+                <constraint firstItem="SDm-10-9qo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="uve-WU-0li"/>
                 <constraint firstItem="SDm-10-9qo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xBO-5r-rn8"/>
                 <constraint firstAttribute="bottom" secondItem="SDm-10-9qo" secondAttribute="bottom" id="xWM-KF-9IC"/>
             </constraints>
@@ -70,7 +71,7 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="301" y="312"/>
+            <point key="canvasLocation" x="426" y="296"/>
         </view>
     </objects>
 </document>

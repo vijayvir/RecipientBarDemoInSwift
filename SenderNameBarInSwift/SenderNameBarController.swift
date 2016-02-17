@@ -14,9 +14,17 @@ import UIKit
 {
 
     optional func leoPredictionArry() ->Array<String>
+
+    
+    // Required
+    func leoCustomCell(cell: SenderTableViewCell , cellForRowAtIndexPath indexPath: NSIndexPath , currentArr : [String] ) ->()
+    
+   optional  func leoCustomCelldidSelectRowAtIndexPath(indexPath : NSIndexPath , tableViewArray tableArr : [String] , withSearchArray arr : [String] ) ->( Bool )
     
     
+    func leoCustomizeChip(chip : ChipViewControl  , objectIndex index : Int , withSearchArray arr : [String] )
     
+    optional  func leoSenderBarUpdateHeightConstaint (height : CGFloat) ->()
 }
 
 
@@ -34,6 +42,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBInspectable var  maxheight : CGFloat = 60 
     
     //MARK:  variable
     
@@ -47,7 +56,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
     var frameOFTableView : CGRect?
     
     //MARK:- CLASS LIFE CYCLE
-    
+
   
     
     
@@ -60,7 +69,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
     
 
     
-    func initializeSubviews(viewframe: CGRect? , parentViewController : UIViewController? , leoDelegate  : LeoSenderBarControllerDelegate?)
+    func initializeSubviews(viewframe: CGRect? , parentViewController : UIViewController? , leoDelegate  : LeoSenderBarControllerDelegate?  )
     {
         // Added custom Container in Above View
         let customView : UIView = NSBundle.mainBundle().loadNibNamed("SenderNameBarContainer", owner: self, options: nil)[0] as! UIView
@@ -68,7 +77,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
        self.leoDelegate = leoDelegate
         
-        
+       
  
         
         self.parentViewController =  parentViewController
@@ -89,7 +98,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
     {
         
-        let frame : CGRect = CGRectMake(10, viewframe!.origin.y + viewframe!.size.height , viewframe!.size.width - 20 , 250)
+        let frame : CGRect = CGRectMake(10, viewframe!.origin.y + viewframe!.size.height , UIScreen.mainScreen().bounds.size.width - 20 , 250)
         
         
         predictionTableView = UITableView(frame: frame, style: UITableViewStyle.Plain)
@@ -117,8 +126,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         contentView!.translatesAutoresizingMaskIntoConstraints = true
         contentView!.frame = scrollView.bounds
    
-        contentView?.backgroundColor = UIColor.yellowColor()
-        scrollView!.contentSize = contentView!.frame.size
+                scrollView!.contentSize = contentView!.frame.size
         
         scrollView.addSubview(contentView!)
         
@@ -140,9 +148,6 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         self.txt_CurrentName?.becomeFirstResponder()
     }
  
-    
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect)
     {
         // Drawing code
@@ -244,10 +249,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SenderTableViewCell", forIndexPath: indexPath) as! SenderTableViewCell
         
-       
-        
-         cell.lbl_Name?.text = ("\(predictionArray[indexPath.row])")
-        
+        leoDelegate?.leoCustomCell(cell, cellForRowAtIndexPath: indexPath, currentArr: predictionArray)
   
         return cell
     
@@ -262,11 +264,19 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
         hideSelf()
         
+        
+        
+        if leoDelegate?.leoCustomCelldidSelectRowAtIndexPath?(indexPath, tableViewArray: self.predictionArray, withSearchArray: searchArray) ?? false  == true
+        {
+            searchArray += ["\(self.predictionArray[indexPath.row])"]
+            setUpScrollView()
+        }
+       else
+        {
         searchArray += ["\(self.predictionArray[indexPath.row])"]
-
-      
-       
         setUpScrollView()
+        }
+       
         
      
         
@@ -314,7 +324,8 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
 
                 customView.layoutIfNeeded()
                 
-                customView.userName!.text = searchArray[index]
+          leoDelegate?.leoCustomizeChip(customView, objectIndex: index, withSearchArray: self.searchArray)
+                
                 customView.anyVarible = index 
                 customView.completionHandler =
                     {
@@ -332,6 +343,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
                         customView.removeFromSuperview()
                          self.setUpScrollView()
                      }
+              
                 self.contentView?.addSubview(customView)
                 
         }
@@ -370,12 +382,22 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
           txt_CurrentName!.autocorrectionType = UITextAutocorrectionType.No;
         self.txt_CurrentName!.addTarget(self, action: "autoTextFieldValueChanged:", forControlEvents: UIControlEvents.EditingChanged)
              self.txt_CurrentName!.delegate = self;
-        self.txt_CurrentName?.backgroundColor = UIColor.redColor()
+       
         
         self.contentView?.addSubview(self.txt_CurrentName!);
         
          scrollView!.contentSize = contentView!.frame.size
-      
+     
+        let currrentHeight = ( 60 + (CGFloat(yAxis) * 30) + (CGFloat(yAxis) * 4))
+        
+        if currrentHeight > maxheight
+        {
+              leoDelegate?.leoSenderBarUpdateHeightConstaint!(maxheight)
+        }
+        else{
+            leoDelegate?.leoSenderBarUpdateHeightConstaint!(60 + (CGFloat(yAxis) * 30) + (CGFloat(yAxis) * 4))
+        }
+        
         
         
         
