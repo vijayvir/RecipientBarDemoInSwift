@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="kYZ-Ll-5YI" userLabel="ChipView" customClass="ChipViewControl" customModule="SenderNameBarInSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arx-ey-728" userLabel="BackView">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="QqG-mc-eIS">
+                            <rect key="frame" x="2" y="2" width="26" height="26"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="26" id="3Tx-nB-zsd"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default USER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="JZW-rc-egs">
+                            <rect key="frame" x="34" y="5" width="63" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1s-AQ-h7h">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="X1s-AQ-h7h" secondAttribute="height" multiplier="10:3" id="RIg-j9-Ij1"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="action_removeFromView:" destination="kYZ-Ll-5YI" eventType="touchUpInside" id="MRA-nf-weg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.32549019610000002" green="0.3294117647" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="QqG-mc-eIS" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" constant="2" id="3Wl-Qg-reQ"/>
+                        <constraint firstItem="QqG-mc-eIS" firstAttribute="leading" secondItem="arx-ey-728" secondAttribute="leading" constant="2" id="90P-sM-4a1"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" id="DZd-jb-daO"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="centerX" secondItem="arx-ey-728" secondAttribute="centerX" id="Jbu-uS-its"/>
+                        <constraint firstAttribute="bottom" secondItem="X1s-AQ-h7h" secondAttribute="bottom" id="PXa-IJ-zMv"/>
+                        <constraint firstItem="JZW-rc-egs" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" constant="5" id="RIi-jF-Be6"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="leading" secondItem="arx-ey-728" secondAttribute="leading" id="RVV-Sg-eG8"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="centerY" secondItem="QqG-mc-eIS" secondAttribute="centerY" id="S1e-Z9-M5m"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="leading" secondItem="arx-ey-728" secondAttribute="leading" id="S6z-Fs-ewH"/>
+                        <constraint firstAttribute="trailing" secondItem="X1s-AQ-h7h" secondAttribute="trailing" id="SfQ-ux-tCe"/>
+                        <constraint firstItem="JZW-rc-egs" firstAttribute="leading" secondItem="QqG-mc-eIS" secondAttribute="trailing" constant="6" id="Vmb-p5-PfM"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="leading" secondItem="arx-ey-728" secondAttribute="leading" id="WdG-Mx-Av4"/>
+                        <constraint firstAttribute="bottom" secondItem="X1s-AQ-h7h" secondAttribute="bottom" id="YyZ-cK-2IX"/>
+                        <constraint firstAttribute="trailing" secondItem="JZW-rc-egs" secondAttribute="trailing" constant="3" id="Zfd-QA-kDY"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" id="e5Z-Bs-y8A"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" id="iKc-vX-qad"/>
+                        <constraint firstAttribute="trailing" secondItem="X1s-AQ-h7h" secondAttribute="trailing" id="keH-Vy-BOS"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="top" secondItem="arx-ey-728" secondAttribute="top" id="sGh-ea-RM4"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="leading" secondItem="arx-ey-728" secondAttribute="leading" id="sTX-w6-Z2h"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="centerY" secondItem="arx-ey-728" secondAttribute="centerY" id="sxX-pE-2Cm"/>
+                        <constraint firstItem="X1s-AQ-h7h" firstAttribute="centerY" secondItem="JZW-rc-egs" secondAttribute="centerY" id="ufX-Th-EEE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="arx-ey-728" firstAttribute="top" secondItem="kYZ-Ll-5YI" secondAttribute="top" id="31b-Zh-M9F"/>
+                <constraint firstAttribute="bottom" secondItem="arx-ey-728" secondAttribute="bottom" id="O87-8c-u90"/>
+                <constraint firstItem="arx-ey-728" firstAttribute="leading" secondItem="kYZ-Ll-5YI" secondAttribute="leading" id="hZs-vk-eNH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnAction" destination="X1s-AQ-h7h" id="zfm-b5-8LX"/>
+                <outlet property="userName" destination="JZW-rc-egs" id="FpN-Ko-ScL"/>
+            </connections>
+            <point key="canvasLocation" x="373" y="260"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="profile.png" width="119" height="119"/>
+    </resources>
+</document>
