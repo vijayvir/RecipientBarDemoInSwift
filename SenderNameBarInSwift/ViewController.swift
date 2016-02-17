@@ -29,10 +29,6 @@ class ViewController: UIViewController, LeoSenderBarControllerDelegate
         
         fritNameArr += [ "vijayvir"," harminder"," shanni","avneet","ricky","satvir","param", "cijay", "Boysenberry", "Cantaloupe"," cucumber"," Currant"," Cherry"," Cherimoya"," Cloudberry"," Coconut", "Cranberry"," Damson", "Date"," Dragonfruit", "Durian","Elderberry","Feijoa","Fig", "Goji ber"]
        
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning()
