@@ -179,7 +179,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
         let frame : CGRect = (textFieldTemp.window?.subviews[0].convertRect(textFieldTemp.frame, fromView: textFieldTemp.superview))!
         
-        self.predictionTableView?.frame = CGRectMake(10, frame.origin.y + frame.size.height, ((self.predictionTableView?.frame.size.width)! - 20), 250);
+        self.predictionTableView?.frame = CGRectMake(10, frame.origin.y + frame.size.height, (( UIScreen.mainScreen().bounds.size.width) - 20), 250);
         
         
         let currentString  = textFieldTemp.text as String!
@@ -298,10 +298,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         var xAxis = 0
         var yAxis = 0
         
-        
 
-        
-        
         for  (index, element) in searchArray.enumerate()
         
         {
@@ -337,6 +334,8 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
                         {
                           
                             self.searchArray.removeAtIndex(id )
+                            
+                            
                         }
 
                         
@@ -388,6 +387,12 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
          scrollView!.contentSize = contentView!.frame.size
      
+        
+   
+        
+      
+        
+        
         let currrentHeight = ( 60 + (CGFloat(yAxis) * 30) + (CGFloat(yAxis) * 4))
         
         if currrentHeight > maxheight
@@ -398,7 +403,7 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
             leoDelegate?.leoSenderBarUpdateHeightConstaint!(60 + (CGFloat(yAxis) * 30) + (CGFloat(yAxis) * 4))
         }
         
-        
+          self.predictionTableView?.frame = CGRectMake(10, frame.origin.y + frame.size.height, (self.predictionTableView?.frame.size.width)!, 250);
         
         
     }
@@ -415,7 +420,8 @@ class SenderNameBarController: UIControl,UITextFieldDelegate, UITableViewDelegat
         
         
         predictionTableView?.reloadData()
-   
+        self.predictionTableView?.frame = CGRectMake(10, frame.origin.y + frame.size.height, (self.predictionTableView?.frame.size.width)!, 250);
+
     
     }
     
